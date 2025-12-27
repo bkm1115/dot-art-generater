@@ -1,0 +1,9 @@
+export const DEFAULT_COLUMNS = 20
+export const DEFAULT_ROWS = 12
+export const MIN_COLUMNS = 12
+export const MAX_COLUMNS = 30
+export const MIN_ROWS = 8
+export const MAX_ROWS = 24
+export const DEFAULT_BRIGHTNESS = 0
+export const DEFAULT_CONTRAST = 0
+export const DEFAULT_DITHERING = true
