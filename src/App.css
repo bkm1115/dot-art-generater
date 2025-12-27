@@ -117,6 +117,15 @@
   overflow: hidden;
 }
 
+.uploader-drop.clickable {
+  cursor: pointer;
+}
+
+.uploader-drop.clickable:focus-visible {
+  outline: 2px solid rgba(15, 139, 141, 0.5);
+  outline-offset: 3px;
+}
+
 .uploader-drop.has-image {
   padding: 0;
 }
@@ -279,6 +288,12 @@
   background: linear-gradient(135deg, var(--accent) 0%, #0aa07d 100%);
   color: #fff;
   box-shadow: 0 10px 22px rgba(15, 139, 141, 0.3);
+}
+
+.button.ghost {
+  background: transparent;
+  border: 1px solid rgba(34, 27, 22, 0.2);
+  color: var(--ink);
 }
 
 .button:disabled {

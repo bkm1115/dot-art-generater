@@ -3,9 +3,10 @@ type PreviewProps = {
   text: string
   hasImage: boolean
   onCopy: () => Promise<boolean>
+  onReset: () => void
 }
 
-export function Preview({ text, hasImage, onCopy }: PreviewProps) {
+export function Preview({ text, hasImage, onCopy, onReset }: PreviewProps) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
@@ -48,7 +49,15 @@ export function Preview({ text, hasImage, onCopy }: PreviewProps) {
           onClick={handleCopy}
           disabled={!text}
         >
-          {copied ? '복사 완료!' : 'Copy to Clipboard'}
+          {copied ? '복사 완료!' : '클립보드에 복사'}
+        </button>
+        <button
+          type="button"
+          className="button ghost"
+          onClick={onReset}
+          disabled={!hasImage}
+        >
+          다른 사진으로 시도하기
         </button>
       </div>
     </section>

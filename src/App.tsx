@@ -172,6 +172,21 @@ function App() {
     }
   }
 
+  const handleReset = () => {
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+    setImage(null)
+    setImageUrl(null)
+    setFileName(null)
+    setError(null)
+    setWarning(null)
+    setSettings(DEFAULT_SETTINGS)
+    setOutput('')
+    setStats(getBaseStats(DEFAULT_ROWS, DEFAULT_COLUMNS))
+  }
+
   return (
     <div className="app">
       <header className="hero compact">
@@ -198,7 +213,12 @@ function App() {
           settings={settings}
           onChange={handleSettingsChange}
         />
-        <Preview text={output} hasImage={Boolean(image)} onCopy={handleCopy} />
+        <Preview
+          text={output}
+          hasImage={Boolean(image)}
+          onCopy={handleCopy}
+          onReset={handleReset}
+        />
         <Stats stats={stats} warning={warning} />
       </main>
     </div>

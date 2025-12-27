@@ -25,6 +25,12 @@ export function ImageUploader({
   error,
 }: ImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const canSelect = !previewUrl
+
+  const triggerFileDialog = () => {
+    if (!canSelect) return
+    inputRef.current?.click()
+  }
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -64,7 +70,22 @@ export function ImageUploader({
         </div>
       </div>
 
-      <div className={`uploader-drop ${previewUrl ? 'has-image' : ''}`}>
+      <div
+        className={`uploader-drop ${previewUrl ? 'has-image' : 'clickable'}`}
+        role={canSelect ? 'button' : undefined}
+        tabIndex={canSelect ? 0 : undefined}
+        onClick={canSelect ? triggerFileDialog : undefined}
+        onKeyDown={
+          canSelect
+            ? (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault()
+                  triggerFileDialog()
+                }
+              }
+            : undefined
+        }
+      >
         {previewUrl ? (
           <img src={previewUrl} alt="업로드한 이미지 미리보기" />
         ) : (
@@ -77,13 +98,15 @@ export function ImageUploader({
       </div>
 
       <div className="uploader-actions">
-        <button
-          type="button"
-          className="button primary"
-          onClick={() => inputRef.current?.click()}
-        >
-          이미지 선택
-        </button>
+        {canSelect ? (
+          <button
+            type="button"
+            className="button primary"
+            onClick={triggerFileDialog}
+          >
+            이미지 선택
+          </button>
+        ) : null}
         <div className="file-meta">
           {fileName ? fileName : '아직 업로드된 파일이 없어요.'}
         </div>
