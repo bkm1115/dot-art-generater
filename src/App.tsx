@@ -196,6 +196,13 @@ function App() {
           <p className="subtitle">
             모바일 기준 기본 크기(20x12)로 시작해요.
           </p>
+          <nav className="hero-nav">
+            <a href="#about">소개</a>
+            <a href="#how">사용법</a>
+            <a href="#faq">FAQ</a>
+            <a href="#privacy">개인정보</a>
+            <a href="#terms">이용약관</a>
+          </nav>
         </div>
       </header>
 
@@ -221,6 +228,74 @@ function App() {
         />
         <Stats stats={stats} warning={warning} />
       </main>
+
+      <section className="info-grid">
+        <article className="panel info" id="about">
+          <h2>소개</h2>
+          <p>
+            Dotart Comment Studio는 이미지를 점자(Braille) 문자로 변환해
+            댓글에 붙여넣을 수 있게 만드는 도구입니다. 모든 처리는 브라우저
+            내부에서만 진행되며, 업로드한 이미지는 서버로 전송되지 않습니다.
+          </p>
+        </article>
+        <article className="panel info" id="how">
+          <h2>사용법</h2>
+          <ol>
+            <li>이미지를 업로드하거나 업로드 영역을 클릭합니다.</li>
+            <li>Columns/Rows로 해상도를 맞춥니다.</li>
+            <li>밝기/선명도/명암 디더링을 조절합니다.</li>
+            <li>클립보드에 복사한 뒤 댓글에 붙여넣습니다.</li>
+          </ol>
+        </article>
+        <article className="panel info" id="faq">
+          <h2>자주 묻는 질문</h2>
+          <p>
+            Q. 결과가 흐릿해요. A. Rows/Columns를 늘리거나 선명도를 올려
+            보세요.
+          </p>
+          <p>
+            Q. 줄 정렬이 깨져요. A. 댓글 폰트가 고정폭이 아니라서 생기는
+            현상입니다.
+          </p>
+        </article>
+      </section>
+
+      <section className="policy-grid">
+        <article className="panel info" id="privacy">
+          <h2>개인정보 처리방침</h2>
+          <p>
+            이 서비스는 사용자의 이미지를 서버로 전송하지 않습니다. 모든
+            변환은 브라우저 내에서만 이루어지며, 저장되는 개인정보는
+            없습니다.
+          </p>
+          <p>
+            향후 광고(예: Google AdSense)가 게재될 경우, 광고 제공자가 쿠키
+            또는 유사한 기술을 사용할 수 있습니다.
+          </p>
+        </article>
+        <article className="panel info" id="terms">
+          <h2>서비스 이용약관</h2>
+          <p>
+            본 서비스는 이미지 변환 기능을 제공하는 도구로, 사용자는 본인의
+            권리를 가진 콘텐츠만 업로드해야 합니다.
+          </p>
+          <p>
+            서비스 이용 중 발생하는 결과물의 사용 및 배포에 대한 책임은
+            사용자에게 있습니다.
+          </p>
+        </article>
+      </section>
+
+      <footer className="footer">
+        <span>문의: </span>
+        <a
+          href="https://github.com/bkm1115/dot-art-generater"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub Repository
+        </a>
+      </footer>
     </div>
   )
 }
